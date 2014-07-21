@@ -11,12 +11,16 @@ tracetext.SvgCoordinatesExtracter.extract = function(paths) {
    * @type {Array.<Array.<{x: number, y: number}>>}
    */
   var pathCoords = [];
-  for (var i=0, path; path = paths[i]; i++) {
+  /** @type {SVGPathElement} */
+  var path;
+  for (var i=0; path = paths[i]; i++) {
     pathCoords[i] = [];
-    /** @type {SVGPathElement} */
+    /** @type {SVGPathSeg} */
     var coord;
-    for (var j=0; coord = path[j]; j++) {
-      pathCoords[i][j] = {x: coord.pathSegList[j].x, y: path.pathSegList[j].y};
+    var numCoords = path.pathSegList.length;
+    for (var j=0; j < numCoords; j++) {
+      coord = path.pathSegList.getItem(j);
+      pathCoords[i][j] = {x: coord.x, y: coord.y};
     }
   }
   return pathCoords;
