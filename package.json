@@ -1,0 +1,14 @@
+{
+  "name": "trace-text",
+  "version": "0.0.0",
+  "description": "Converts each SVG text outline to a single path",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Thomas Lee",
+  "license": "MIT",
+  "devDependencies": {
+    "requirejs": "^2.1.14"
+  }
+}

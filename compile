@@ -1,0 +1,22 @@
+#!/bin/sh
+srcfiles=`find src/ bower_components/closure-library/third_party/closure/ bower_components/closure-library/closure/goog/ -type f -name "*.js"`
+time compiler/closure-compiler --js_output_file=dist/bootstrap.js \
+--create_source_map dist/bootstrap.map \
+--source_map_location_mapping 'dist/src|src' \
+#--compilation_level ADVANCED_OPTIMIZATIONS \
+--summary_detail_level 3 \
+--language_in=ECMASCRIPT5_STRICT \
+--warning_level=VERBOSE \
+--jscomp_error=checkTypes \
+--jscomp_error=checkVars \
+--jscomp_error=const \
+--jscomp_error=internetExplorerChecks \
+--jscomp_error=invalidCasts \
+--jscomp_error=nonStandardJsDocs \
+--jscomp_error=suspiciousCode \
+--jscomp_error=undefinedVars \
+--only_closure_dependencies \
+--output_wrapper_file compiler/wrapper.js \
+--closure_entry_point=tracetext.main \
+$srcfiles \
+$@
