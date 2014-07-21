@@ -3,7 +3,7 @@ srcfiles=`find src/ bower_components/closure-library/third_party/closure/ bower_
 time compiler/closure-compiler --js_output_file=dist/bootstrap.js \
 --create_source_map dist/bootstrap.map \
 --source_map_location_mapping 'dist/src|src' \
-#--compilation_level ADVANCED_OPTIMIZATIONS \
+--compilation_level ADVANCED \
 --summary_detail_level 3 \
 --language_in=ECMASCRIPT5_STRICT \
 --warning_level=VERBOSE \
@@ -20,3 +20,5 @@ time compiler/closure-compiler --js_output_file=dist/bootstrap.js \
 --closure_entry_point=tracetext.main \
 $srcfiles \
 $@
+# Use SIMPLE during development to get sourcemaps to work
+#--compilation_level SIMPLE \
