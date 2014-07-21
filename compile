@@ -1,8 +1,8 @@
 #!/bin/sh
+compiler/gen-dep.sh
 srcfiles=`find src/ bower_components/closure-library/third_party/closure/ bower_components/closure-library/closure/goog/ -type f -name "*.js"`
 time compiler/closure-compiler --js_output_file=dist/bootstrap.js \
 --create_source_map dist/bootstrap.map \
---source_map_location_mapping 'dist/src|src' \
 --compilation_level ADVANCED \
 --summary_detail_level 3 \
 --language_in=ECMASCRIPT5_STRICT \
@@ -18,7 +18,10 @@ time compiler/closure-compiler --js_output_file=dist/bootstrap.js \
 --only_closure_dependencies \
 --output_wrapper_file compiler/wrapper.js \
 --closure_entry_point=tracetext.main \
+--externs compiler/externs/svg.js \
 $srcfiles \
 $@
-# Use SIMPLE during development to get sourcemaps to work
+# Use SIMPLE during development to get sourcemaps to work better
 #--compilation_level SIMPLE \
+# TODO: Fix source mapping instead of using symlinks
+#--source_map_location_mapping 'dist/src|src' \

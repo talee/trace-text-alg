@@ -11,7 +11,10 @@
   </head>
   <body>
     <!-- DEV -->
-    <script src="dist/bootstrap.js"></script>
+    <script src="bower_components/closure-library/closure/goog/base.js"></script>
+    <script src="dist/tracetext-dep.js"></script>
+    <script>goog.require('tracetext.main');</script>
+
     <!-- PROD
       <script src="dist/bootstrap.js"></script>
     -->
