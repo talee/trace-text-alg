@@ -8,7 +8,7 @@ tracetext.SvgService = function() {};
 
 /**
  * Makes a request for the given XML URI.
- * @param {string} url
+ * @param {!string} url
  * @param {function(string)} callback Called with the retrieved document.
  */
 tracetext.SvgService.get = function(url, callback) {

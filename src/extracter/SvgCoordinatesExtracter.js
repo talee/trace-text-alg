@@ -1,14 +1,15 @@
 goog.provide('tracetext.SvgCoordinatesExtracter');
+goog.require('tracetext.Coordinate');
 
 /**
  * Gets a list of sets of coordinates.
- * @param {NodeList} paths
- * @return {Array.<Array.<{x: number, y: number}>>}
+ * @param {!NodeList} paths
+ * @return {!Array.<!Array.<!tracetext.Coordinate>>}
  */
 tracetext.SvgCoordinatesExtracter.extract = function(paths) {
   /**
    * @const
-   * @type {Array.<Array.<{x: number, y: number}>>}
+   * @type {!Array.<!Array.<!tracetext.Coordinate>>}
    */
   var pathCoords = [];
   /** @type {SVGPathElement} */
@@ -20,7 +21,7 @@ tracetext.SvgCoordinatesExtracter.extract = function(paths) {
     var numCoords = path.pathSegList.length;
     for (var j=0; j < numCoords; j++) {
       coord = path.pathSegList.getItem(j);
-      pathCoords[i][j] = {x: coord.x, y: coord.y};
+      pathCoords[i][j] = new tracetext.Coordinate(coord.x, coord.y);
     }
   }
   return pathCoords;
