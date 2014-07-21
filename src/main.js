@@ -10,6 +10,7 @@ goog.require('tracetext.EndpointDetector');
  */
 function main(svgString) {
   var paths = tracetext.SvgObjectExtracter.extract(svgString);
+  console.log('paths', paths[0].pathSegList);
   var coordSets = tracetext.SvgCoordinatesExtracter.extract(paths);
   console.log('coordSets', tracetext.Coordinate.formatArray(coordSets[0], 1));
   var endpoints = tracetext.EndpointDetector.getEndpoints(coordSets[0]);

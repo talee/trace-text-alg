@@ -17,11 +17,18 @@ tracetext.SvgCoordinatesExtracter.extract = function(paths) {
   for (var i=0; path = paths[i]; i++) {
     pathCoords[i] = [];
     /** @type {SVGPathSeg} */
-    var coord;
+    var pathSeg;
     var numCoords = path.pathSegList.length;
     for (var j=0; j < numCoords; j++) {
-      coord = path.pathSegList.getItem(j);
-      pathCoords[i][j] = new tracetext.Coordinate(coord.x, coord.y);
+      var prevPathSeg = pathCoords[i][j-1];
+      pathSeg = path.pathSegList.getItem(j);
+      // Lowercase means coordinates relative to previous coordinates; right, up
+      if (prevPathSeg && pathSeg.pathSegTypeAsLetter === pathSeg.pathSegTypeAsLetter.toLowerCase()) {
+        pathCoords[i][j] = new tracetext.Coordinate(prevPathSeg.x + pathSeg.x, prevPathSeg.y - pathSeg.y);
+      } else {
+        // TODO: Make it relative to prev path instead of first coordinate
+        pathCoords[i][j] = new tracetext.Coordinate(pathSeg.x, pathSeg.y);
+      }
     }
   }
   return pathCoords;
