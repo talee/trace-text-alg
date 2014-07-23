@@ -1,14 +1,19 @@
+/**
+ * 
+ * @fileoverview Extension of {@link goog.math.Coordinate}.
+ */
+
 goog.provide('tracetext.Coordinate');
+goog.require('goog.math.Coordinate');
 
 /**
+ * @extends {goog.math.Coordinate}
  * @constructor
- * @param {number} x
- * @param {number} y
  */
-tracetext.Coordinate = function(x, y) {
-  this.x = x;
-  this.y = y;
+tracetext.Coordinate = function(opt_x, opt_y) {
+  goog.math.Coordinate.call(this, opt_x, opt_y);
 };
+goog.inherits(tracetext.Coordinate, goog.math.Coordinate);
 
 /**
  * @param {!tracetext.Coordinate} coord
