@@ -4,6 +4,7 @@ goog.require('tracetext.SvgObjectExtracter');
 goog.require('tracetext.SvgCoordinatesExtracter');
 goog.require('tracetext.Coordinate');
 goog.require('tracetext.EndpointDetector');
+goog.require('tracetext.graphics.Path');
 
 /**
  * @param {!string} svgString
@@ -17,8 +18,8 @@ function main(svgString) {
   console.log('endpoints', endpoints);
   var midpoints = tracetext.Coordinate.getMidpoints(endpoints);
   console.log('midpoints', tracetext.Coordinate.formatArray(midpoints, 1));
+  tracetext.graphics.Path.drawPath(midpoints, 'body');
 }
 tracetext.SvgService.get('src/sample/T_path.svg', function(xml){
   main(xml);
 });
-//TODO: Move to goog.math.Coordinate

@@ -7,6 +7,7 @@ time compiler/closure-compiler --js_output_file=dist/bootstrap.js \
 --summary_detail_level 3 \
 --language_in=ECMASCRIPT5_STRICT \
 --warning_level=VERBOSE \
+--jscomp_off=deprecated \
 --jscomp_error=checkTypes \
 --jscomp_error=checkVars \
 --jscomp_error=const \

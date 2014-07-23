@@ -7,6 +7,26 @@
         margin: 10rem;
         font-family: Helvetica;
       }
+      svg {
+        border: 1px solid #000;
+        padding: 200px;
+      }
+      path, polyline, line, rect {
+        fill:none;
+        stroke:#000000;
+        stroke-weight: 2px;
+        stroke-dasharray: 320;
+        -webkit-animation: trace 3s;
+        -webkit-animation-fill-mode: forwards;
+      }
+      @-webkit-keyframes trace {
+        from {
+          stroke-dashoffset: 320;
+        }
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
     </style>
   </head>
   <body>
