@@ -2,7 +2,7 @@ goog.provide('tracetext.SvgCoordinatesExtracter');
 goog.require('tracetext.Coordinate');
 
 /**
- * Gets a list of sets of coordinates.
+ * Creates lists of coordinates for each path.
  * @param {!NodeList} paths
  * @return {!Array.<!Array.<!tracetext.Coordinate>>}
  */

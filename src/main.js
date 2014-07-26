@@ -18,7 +18,7 @@ function main(svgString) {
   console.log('endpoints', endpoints);
   var midpoints = tracetext.Coordinate.getMidpoints(endpoints);
   console.log('midpoints', tracetext.Coordinate.formatArray(midpoints, 1));
-  tracetext.graphics.Path.drawPath(midpoints, 'body');
+  tracetext.graphics.Path.drawPath(coordSets[0], 'body');
 }
 tracetext.SvgService.get('src/sample/T_path.svg', function(xml){
   main(xml);
