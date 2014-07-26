@@ -36,7 +36,7 @@ tracetext.graphics.Path.drawPath = function(coords, domQuerySelector) {
   pathDOM.style.webkitAnimation = 'trace 2s forwards';
 
   var priorityStyleSheet = document.styleSheets[document.styleSheets.length-1];
-  priorityStyleSheet.insertRule("@-webkit-keyframes trace { from { stroke-dashoffset: 430; } to { stroke-dashoffset: 0; } }", priorityStyleSheet.cssRules.length);
+  priorityStyleSheet.insertRule("@-webkit-keyframes trace { from { stroke-dashoffset: "+pathLength+"; } to { stroke-dashoffset: 0; } }", priorityStyleSheet.cssRules.length);
 
   // Animate via JS
   //var pathAnimation = new goog.fx.Animation([pathLength], [0], 1000);
