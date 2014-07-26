@@ -24,7 +24,7 @@ tracetext.SvgCoordinatesExtracter.extract = function(paths) {
       pathSeg = path.pathSegList.getItem(j);
       // Lowercase means coordinates relative to previous coordinates; right, up
       if (prevPathSeg && pathSeg.pathSegTypeAsLetter === pathSeg.pathSegTypeAsLetter.toLowerCase()) {
-        pathCoords[i][j] = new tracetext.Coordinate(prevPathSeg.x + pathSeg.x, prevPathSeg.y - pathSeg.y);
+        pathCoords[i][j] = new tracetext.Coordinate(prevPathSeg.x + pathSeg.x, prevPathSeg.y + pathSeg.y);
       } else {
         // TODO: Make it relative to prev path instead of first coordinate
         pathCoords[i][j] = new tracetext.Coordinate(pathSeg.x, pathSeg.y);
